@@ -1,8 +1,8 @@
 import React from 'react';
-import classes from './Navigation.module.css';
+import classes from './Header.module.css';
 import weatherLogo from '../../assets/images/icons8-stormy-weather-48.png';
 
-const Navigation = (props) => {
+const Header = (props) => {
     return (
         <React.Fragment>
             <header className={classes.Navbar}>
@@ -15,4 +15,4 @@ const Navigation = (props) => {
 }
 
 
-export default Navigation;
+export default Header;
