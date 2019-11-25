@@ -15,7 +15,8 @@ class App extends Component {
     }
   }
 
-  componentDidMount() {
+  
+componentDidMount() {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${
       this.state.search
     }&appid=${key}&units=imperial`)
@@ -26,12 +27,26 @@ class App extends Component {
           temp: `${Math.round(data.main.temp)}°`
         }
         }));
-    
 }
 
-  onSearchSubmit (event) {
-    this.setState({search: event.target.value});
-  }
+
+onSubmit = (event) => {
+  this.setState({search: event.input.value});
+}
+
+
+// componentDidUpdate() {
+//   fetch(`https://api.openweathermap.org/data/2.5/weather?q=${
+//     this.state.search
+//   }&appid=${key}&units=imperial`)
+//       .then(response=> response.json())
+//       .then(data => this.setState({weather: {
+//         icon: data.weather[0].icon,
+//         description: data.weather[0].description.toUpperCase(),
+//         temp: `${Math.round(data.main.temp)}°`
+//       }
+//       }));
+// }
 
 
   render() {
@@ -39,7 +54,7 @@ class App extends Component {
       <div className="App">
         <Header />
         <Search 
-          searchSubmit={this.onSearchSubmit} />
+          submit={this.onSubmit} />
         <Card 
           city={this.state.search}
           weather={this.state.weather.description}
